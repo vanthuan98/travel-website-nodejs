@@ -1,0 +1,209 @@
+{{> tours.component/header}}
+<section class="tours-header">
+    <div class="container">
+        <h1>Tours</h1>
+    </div>
+</section>
+<section class="tours">
+    <div class="container">
+        <form class="hero-form">
+            <div class="form-group">
+                <input type="text" placeholder="Where to?" name="whereTo">
+            </div>
+            <div class="form-group" aria-placeholder="When?">
+                <input type="date" name="when">
+            </div>
+            <div class="form-group">
+                <select id="select-form" style="display: none;" name="type">
+                    <option value="">Travel Type</option>
+                    <option value="adventure-tours">Adventure Tours</option>
+                    <option value="city-tours">City Tours</option>
+                    <option value="couple-tours">Couple Tours</option>
+                    <option value="group-tours">Group Tours</option>
+                </select>
+                <div class="nice-select" tabindex="0">
+                    <span class="current">Travel Type</span>
+                    <ul class="list">
+                        <li data-value="Travel Type" class="selected">Travel Type</li>
+                        <li data-value="adventure-tours" class="option">Adventure Tours</li>
+                        <li data-value="city-tours" class="option">City Tours</li>
+                        <li data-value="couple-tours" class="option">Couple Tours</li>
+                        <li data-value="group-tours" class="option">Group Tours</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="form-group">
+                <button>
+                    <i class='bx bx-search'></i>
+                    <span>Find Now</span>
+                </button>
+            </div>
+        </form>
+
+        <div class="tours-page-section">
+            <div class="row">
+                <div class="col-lg-8 col-md-12">
+                    <div class="item-shorting">
+                        <div class="left-column">
+                            <h3>Showing 1-6 of 20 Results</h3>
+                        </div>
+                        <div class="right-column">
+                            <button class="list-view selected">
+                                <i class='bx bx-list-ul'></i>
+                            </button>
+                            <button class="grid-view">
+                                <i class='bx bx-grid-alt'></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="wrapper-tours">
+                        {{#each tour}}
+                        <div class="tour-box">
+                            <div class="image-tour">
+                                <img src="{{this.image}}" alt="tour">
+                            </div>
+                            <div class="content-tour">
+                                <div class="info-review">
+                                    <span class="star-rate">
+                                        <i class='bx bxs-star'></i>
+                                        <i class='bx bxs-star'></i>
+                                        <i class='bx bxs-star'></i>
+                                        <i class='bx bxs-star'></i>
+                                        <i class='bx bxs-star'></i>
+                                    </span>
+                                    <span class="count-review">
+                                        {{this.review}} Review
+                                    </span>
+                                </div>
+                                <h3>
+                                    <a href="/">{{this.title}}</a>
+                                </h3>
+                                <h4>${{this.price}}<span> / Per person</span></h4>
+                                <p>{{this.excerpt}}</p>
+                                <a class="see-detail" href="/">See Details</a>
+                            </div>
+                        </div>
+                        {{/each}}
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-12">
+                    <div class="search-box">
+                        <h3>Search Tours</h3>
+                        <form action="">
+                            <input type="text" placeholder="Search Location">
+                            <button type="submit">
+                                <i class='bx bx-search-alt'></i>
+                            </button>
+                        </form>
+                    </div>
+                    <div class="categories-tour">
+                        <h3>Categories</h3>
+                        <ul>
+                            <li class="category-item">
+                                <i class='bx bx-checkbox'></i>
+                                Adventure Tours
+                            </li>
+                            <li class="category-item">
+                                <i class='bx bx-checkbox'></i>
+                                City Tours
+                            </li>
+                            <li class="category-item">
+                                <i class='bx bx-checkbox'></i>
+                                Couple Tours
+                            </li>
+                            <li class="category-item">
+                                <i class='bx bx-checkbox'></i>
+                                Group Tours
+                            </li>
+                            <li class="category-item">
+                                <i class='bx bx-checkbox'></i>
+                                Hosted Tours
+                            </li>
+                            <li class="category-item">
+                                <i class='bx bxs-checkbox-checked'></i>
+                                All
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="pagination">
+                <ul>
+                    <li><a href="/"><i class='bx bx-left-arrow-alt'></i></a></li>
+                    <li><a class="active" href="/">1</a></li>
+                    <li><a href="/">2</a></li>
+                    <li><a href="/"><i class='bx bx-right-arrow-alt'></i></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+<script>
+    const selectForm = document.querySelector('#select-form');
+    const selectFormOption = document.querySelectorAll('#select-form option');
+    const niceSelect = document.querySelector('.nice-select');
+    const niceSelectList = document.querySelector('.nice-select .list');
+    const niceSelectCurrent = document.querySelector('.nice-select .current');
+    const niceSelectListOption = document.querySelectorAll('.nice-select .list .option');
+    const btnSelectView = document.querySelectorAll('.right-column button');
+    const categoryItem = document.querySelectorAll('.category-item');
+    let selectCurrent = null;
+
+    // open and close select list
+    niceSelect.addEventListener('click', () => {
+        if (niceSelectList.classList.contains('open')) {
+            niceSelectList.classList.remove('open');
+        }
+        else {
+            niceSelectList.classList.add('open');
+        }
+    });
+
+    // handle chose item list
+    niceSelectListOption.forEach(optionItem => {
+        optionItem.addEventListener('click', () => {
+            niceSelectListOption.forEach(option => {
+                option.classList.remove('selected');
+            });
+            optionItem.classList.add('selected');
+            niceSelectCurrent.innerText = optionItem.innerText;
+            selectCurrent = optionItem.dataset.value;
+            handleSelectOption();
+        });
+    });
+
+    const handleSelectOption = () => {
+        selectFormOption.forEach(option => {
+            if (option.value === selectCurrent) {
+                option.setAttribute('selected', "");
+                return;
+            }
+        });
+    };
+
+    // handle select view
+    btnSelectView.forEach(btn => {
+        btn.addEventListener('click', () => {
+            btnSelectView.forEach(btn => {
+                btn.classList.remove('selected');
+            });
+            btn.classList.add('selected');
+        });
+    });
+
+    //handle category
+    categoryItem.forEach(item => {
+        item.addEventListener('click', () => {
+            categoryItem.forEach(item => {
+                item.childNodes[1].classList.remove('bxs-checkbox-checked');
+                if (!item.childNodes[1].classList.contains('bx-checkbox')) {
+                    item.childNodes[1].classList.add('bx-checkbox');
+                }
+            });
+            item.childNodes[1].classList.remove('bx-checkbox');
+            item.childNodes[1].classList.add('bxs-checkbox-checked');
+        });
+    });
+
+</script>
+{{> footer}}

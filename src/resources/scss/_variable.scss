@@ -1,0 +1,14 @@
+// responsive
+$breakpoints: (
+  'small':  576px,
+  'medium': 768px,
+  'large':  992px
+) !default;
+
+// color
+$main-color: #ff7c5b;
+$white-color: #ffffff;
+$black-color: #000000;
+
+// font-family
+$font-work-san: 'Work Sans', sans-serif;

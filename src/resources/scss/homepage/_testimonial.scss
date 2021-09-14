@@ -1,0 +1,75 @@
+@import '../mixin';
+
+.testimonial {
+    padding: 150px 0;
+    .container {
+        .sec-title {
+            text-align: center;
+            margin-bottom: 50px;
+
+            p {
+                @include section-title-p;
+            }
+            h2 {
+                @include section-title-h2;
+            }
+        }
+
+        .swiper {
+            overflow: visible;
+        }
+
+        .testimonial-box {
+            position: relative;
+            background: #fff;
+            padding: 48px 30px 71px;
+            border-radius: 10px;
+            box-shadow: 0 10px 40px 0 rgba(0, 0, 0, .1);
+
+            .rating {
+                text-align: center;
+                color: #ffab01;
+                margin-bottom: 23px;
+            }
+            .desc {
+                font-size: 16px;
+                line-height: 30px;
+                font-weight: 500;
+                color: gray;
+                margin-bottom: 23px;
+            }
+            h4 {
+                color: #061a3a;
+                font-size: 20px;
+                line-height: 28px;
+                font-weight: 700;
+                text-align: center;
+            }
+            span {
+                    display: block;
+                    font-size: 15px;
+                    font-weight: 500;
+                    text-align: center;
+                    color: grey;
+            }
+            figure {
+                width: 95px;
+                height: 95px;
+                background: #fff;
+                padding: 7px;
+                border-radius: 50%;
+                box-shadow: 0 20px 40px 0 rgba(6, 26, 58, .2);
+
+                position: absolute;
+                left: 50%;
+                transform: translateX(-50%);
+                bottom: -47px;
+                img {
+                    display: block;
+                    width: 100%;
+                    border-radius: 50%;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,88 @@
+<section class="hero">
+    <div class="container">
+        <h1 class="hero-title">
+            Explore
+            <br>
+            Your Travel
+        </h1>
+        <p class="hero-subtitle">
+            Discover your next great adventure, become an explorer to get started!
+        </p>
+        <form class="hero-form">
+            <div class="form-group">
+                <input type="text" placeholder="Where to?" name="whereTo">
+            </div>
+            <div class="form-group" aria-placeholder="When?">
+                <input type="date" name="when">
+            </div>
+            <div class="form-group">
+                <select id="select-form" style="display: none;" name="type">
+                    <option value="">Travel Type</option>
+                    <option value="adventure-tours">Adventure Tours</option>
+                    <option value="city-tours">City Tours</option>
+                    <option value="couple-tours">Couple Tours</option>
+                    <option value="group-tours">Group Tours</option>
+                </select>
+                <div class="nice-select" tabindex="0">
+                    <span class="current">Travel Type</span>
+                    <ul class="list">
+                        <li data-value="Travel Type" class="selected">Travel Type</li>
+                        <li data-value="adventure-tours" class="option">Adventure Tours</li>
+                        <li data-value="city-tours" class="option">City Tours</li>
+                        <li data-value="couple-tours" class="option">Couple Tours</li>
+                        <li data-value="group-tours" class="option">Group Tours</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="form-group">
+                <button>
+                    <i class='bx bx-search'></i>
+                    <span>Find Now</span>
+                </button>
+            </div>
+        </form>
+    </div>
+    <div class="hero-pattern-layer"></div>
+</section>
+
+<script>
+    const selectForm = document.querySelector('#select-form');
+    const selectFormOption = document.querySelectorAll('#select-form option');
+    const niceSelect = document.querySelector('.nice-select');
+    const niceSelectList = document.querySelector('.nice-select .list');
+    const niceSelectCurrent = document.querySelector('.nice-select .current');
+    const niceSelectListOption = document.querySelectorAll('.nice-select .list .option');
+    let selectCurrent = null;
+
+    // open and close select list
+    niceSelect.addEventListener('click', () => {
+        if (niceSelectList.classList.contains('open')) {
+            niceSelectList.classList.remove('open');
+        }
+        else {
+            niceSelectList.classList.add('open');
+        }
+    });
+
+    // handle chose item list
+    niceSelectListOption.forEach(optionItem => {
+        optionItem.addEventListener('click', () => {
+            niceSelectListOption.forEach(option => {
+                option.classList.remove('selected');
+            });
+            optionItem.classList.add('selected');
+            niceSelectCurrent.innerText = optionItem.innerText;
+            selectCurrent = optionItem.dataset.value;
+            handleSelectOption();
+        });
+    });
+
+    const handleSelectOption = () => {
+        selectFormOption.forEach(option => {
+            if (option.value === selectCurrent) {
+                option.setAttribute('selected', "");
+                return;
+            }
+        });
+    };
+</script>

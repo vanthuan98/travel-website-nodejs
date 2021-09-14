@@ -1,0 +1,88 @@
+<section class="about">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-md-12">
+                <div class="image-block-about">
+                    <div class="image-block">
+                        <img src="/image/about-1.jpg" alt="image about">
+                    </div>
+                    <div class="clear-fix"></div>
+                    <div class="video-block">
+                        <div class="image-thumb">
+                            <img src="/image/about-2.jpg" alt="image thumbnail">
+                        </div>
+                        <div class="block-play-video">
+                            <h5>Find Your Best Destination</h5>
+                            <button class="open-modal-about-video">
+                                <i class='bx bx-play-circle'></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-12">
+                <div class="about-content">
+                    <div class="sec-title">
+                        <p>ABOUT TRAVIO</p>
+                        <h2>World Best Travel Agency Company Since 2008.</h2>
+                    </div>
+                    <div class="about-content-desc">
+                        <p>Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiu smod tempor incididunt ut
+                            labore dolore magna
+                            aliqua.Quis ipsum suspen disse ultrices gravida Risus commodo viverra maecenas accumsan
+                            lacus
+                            vel facilisis.</p>
+                        <div class="check-content-check">
+                            <span>
+                                <i class='bx bx-check'></i>
+                                Ratione voluptatem.sequi nesciunt
+                            </span>
+                            <span>
+                                <i class='bx bx-check'></i>
+                                Ratione voluptatem.
+                            </span>
+                            <span>
+                                <i class='bx bx-check'></i>
+                                Ratione voluptatem sequi.
+                            </span>
+                        </div>
+                        <a href="/tours">Find Tours</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="about-modal-video">
+        <button class="btn-close-modal-video">
+            <i class='bx bx-x'></i>
+        </button>
+        <div class="container">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/NUDBwBJeKvY"
+                title="YouTube video player" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen>
+            </iframe>
+        </div>
+    </div>
+
+    <script>
+        const btnOpenModalAboutVideo = document.querySelector('.open-modal-about-video');
+        const btnCloseModalAboutVideo = document.querySelector('.btn-close-modal-video');
+        const modalAboutVideo = document.querySelector('.about-modal-video');
+
+        btnOpenModalAboutVideo.addEventListener('click', () => {
+            modalAboutVideo.classList.add('open');
+        });
+
+        btnCloseModalAboutVideo.addEventListener('click', () => {
+            modalAboutVideo.classList.remove('open');
+        });
+
+        document.onclick = (e) => {
+            if (e.target === modalAboutVideo) {
+                modalAboutVideo.classList.remove('open');
+            }
+        };
+
+    </script>
+</section>

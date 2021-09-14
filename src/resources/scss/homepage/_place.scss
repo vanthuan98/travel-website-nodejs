@@ -1,0 +1,95 @@
+@import '../mixin';
+
+.place {
+    padding: 150px 0;
+    background: #f5f6f6;
+
+    .container {
+        .sec-title {
+            span {
+                @include section-title-p;
+            }
+            h2 {
+                @include section-title-h2;
+                margin-bottom: 22px;
+            }
+            p {
+                color: gray;
+                font-weight: 400;
+                font-size: 16px;
+                color: gray;
+                line-height: 28px;
+            }    
+        }
+        .place-box-image {
+            background: #fff;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 15px 25px 0 rgba(0, 0, 0, .1);
+            margin-bottom: 30px;
+            position: relative;
+            overflow: hidden;
+            cursor: grab;
+
+            &:hover img {
+                transform: scale(1.05);
+            }
+
+            img {
+                display: block;
+                width: 100%;
+                max-width: 100%;
+                transition: .5s all ease;
+                border-radius: 8px;
+            }
+            a { 
+                position: absolute;
+                bottom: 35px;
+                left: 45px;
+                display: inline-block;
+                font-size: 24px;
+                line-height: 32px;
+                color: #fff;
+                font-weight: 600;
+                transition: ease all .5s;
+
+                &:hover {
+                    color: $main-color;
+                }
+            }
+        }
+        .place-link-box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+            justify-content: center;
+
+            h4 {
+                font-size: 22px;
+                line-height: 28px;
+                font-weight: 700;
+                margin-bottom: 23px;
+                color: #061a3a;
+            }
+            a {
+                font-size: 17px;
+                line-height: 25px;
+                font-weight: 500;
+                color: #fff;
+                background-color: $main-color;
+                text-align: center;
+                padding: 17.5px 41.5px;
+                border-radius: 4px;
+                z-index: 1;
+                box-shadow: 0 15px 25px 0 rgba(255, 124, 91, .3);
+                transition: all 500ms ease;
+
+                &:hover {
+                    background-color: #061a3a;
+                }
+            }
+        }
+    }
+}

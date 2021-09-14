@@ -1,0 +1,109 @@
+{{> blogs.component/header}}
+<section class="blogs-header">
+    <div class="container">
+        <h1>Blogs</h1>
+    </div>
+</section>
+<section class="blogs">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-12">
+                <div class="grid-container">
+                    {{#each blog}}
+                    <div class="blog-box">
+                        <div class="blog-date">
+                            <span class="date-icon">
+                                <i class='bx bxs-calendar'></i>
+                            </span>
+                            <p>{{this.date}}</p>
+                        </div>
+                        <figure class="blog-image">
+                            <img src="{{this.avatar}}" alt="image blog">
+                        </figure>
+                        <div class="category">
+                            <a href="/">{{this.category.[0]}}</a>
+                            <a href="/">{{this.category.[1]}}</a>
+                        </div>
+                        <h3 class="title">
+                            <a href="/">{{this.title}}</a>
+                        </h3>
+                        <p class="info"> By <span>{{this.author}} </span>- {{this.date}}</p>
+                        <p class="excerpt">
+                            {{this.excerpt}}
+                        </p>
+                        <a class="detail" href="/">See Details</a>
+                    </div>
+                    {{/each}}
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-12">
+                <div class="search-box">
+                    <h3>Search Tours</h3>
+                    <form action="">
+                        <input type="text" placeholder="Search Location">
+                        <button type="submit">
+                            <i class='bx bx-search-alt'></i>
+                        </button>
+                    </form>
+                </div>
+                <div class="categories-blogs">
+                    <h3>Categories</h3>
+                    <ul>
+                        <li class="category-item">
+                            <i class='bx bx-checkbox'></i>
+                            Adventure Tours
+                        </li>
+                        <li class="category-item">
+                            <i class='bx bx-checkbox'></i>
+                            City Tours
+                        </li>
+                        <li class="category-item">
+                            <i class='bx bx-checkbox'></i>
+                            Couple Tours
+                        </li>
+                        <li class="category-item">
+                            <i class='bx bx-checkbox'></i>
+                            Group Tours
+                        </li>
+                        <li class="category-item">
+                            <i class='bx bx-checkbox'></i>
+                            Hosted Tours
+                        </li>
+                        <li class="category-item">
+                            <i class='bx bxs-checkbox-checked'></i>
+                            All
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="pagination">
+            <ul>
+                <li><a href="/"><i class='bx bx-left-arrow-alt'></i></a></li>
+                <li><a class="active" href="/">1</a></li>
+                <li><a href="/">2</a></li>
+                <li><a href="/"><i class='bx bx-right-arrow-alt'></i></a></li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<script>
+    const btnSelectView = document.querySelectorAll('.right-column button');
+    const categoryItem = document.querySelectorAll('.category-item');
+
+    //handle category
+    categoryItem.forEach(item => {
+        item.addEventListener('click', () => {
+            categoryItem.forEach(item => {
+                item.childNodes[1].classList.remove('bxs-checkbox-checked');
+                if (!item.childNodes[1].classList.contains('bx-checkbox')) {
+                    item.childNodes[1].classList.add('bx-checkbox');
+                }
+            });
+            item.childNodes[1].classList.remove('bx-checkbox');
+            item.childNodes[1].classList.add('bxs-checkbox-checked');
+        });
+    });
+</script>
+{{> footer}}

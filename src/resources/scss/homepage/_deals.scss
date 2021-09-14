@@ -1,0 +1,67 @@
+
+
+.deals {
+    padding: 150px 0;
+    background: url('/image/deals-1.jpg') no-repeat center;
+    background-size: cover;
+
+    .container {
+        .deals-box {
+            max-width: 370px;
+            width: 100%;
+            background: #fff;
+            padding: 44px 40px 41px 50px;
+            border-radius: 10px;
+
+            h3 {
+                font-size: 24px;
+                line-height: 32px;
+                font-weight: 800;
+                margin-bottom: 5px;
+                color: #061a3a;
+            }
+            h5 {
+                margin-bottom: 16px;
+                font-size: 20px;
+                line-height: 28px;
+                font-weight: 500;
+                color: $main-color;
+
+                span {
+                    display: inline-block;
+                    font-size: 20px;
+                    line-height: 28px;
+                    font-family: work sans,sans-serif;
+                    color: gray;
+                    font-weight: 500;
+                    text-decoration: line-through;
+                }
+            }
+            p {
+                font-size: 15px;
+                margin-bottom: 30px;
+                color: gray;
+                font-weight: 400;
+                line-height: 28px;
+            }
+            a {
+                padding: 12.5px 29px;
+                font-size: 15px;
+                display: inline-block;
+                line-height: 25px;
+                font-weight: 500;
+                color: #fff;
+                background-color: $main-color;
+                text-align: center;
+                border-radius: 4px;
+                z-index: 1;
+                box-shadow: 0 15px 25px 0 rgba(255, 124, 91, .3);
+                transition: all 500ms ease;
+
+                &:hover {
+                    background: #061a3a;
+                }
+            }
+        }
+    }
+}

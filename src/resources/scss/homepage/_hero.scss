@@ -1,0 +1,157 @@
+
+
+.hero {
+    position: relative;
+    background: url("/image/banner-1.jpg") no-repeat center;
+    background-size: cover;
+    padding: 216px 0px 270px 0px;
+
+
+    .container {
+        .hero-title {
+            font-size: 70px;
+            line-height: 90px;
+            font-family: 'Playfair Display', serif;
+            color: #ffffff;
+            font-weight: 900;
+            margin-bottom: 29px;
+        }
+        .hero-subtitle {
+            font-size: 20px;
+            line-height: 28px;
+            color: #ffffff;
+            font-weight: 500;
+            margin-bottom: 43px;
+            font-family: 'Work Sans', sans-serif;
+        }
+        .hero-form {
+            display: flex;
+            align-items: center;
+            position: relative;
+            padding: 20px;
+            background: rgba(255,255,255,0.15);
+            border-radius: 6px;
+
+            .form-group {
+                width: 25%;
+
+                input {
+                    padding: 10px 25px;
+                    background-color: $white-color;
+                    border: none;
+                    outline: none;
+                    border-radius: 5px;
+                    width: calc(100% - 20px);
+                    height: 64px;
+                    color: #848484;
+                    font-family: 'Work Sans', sans-serif;
+                    font-weight: 500;
+                }
+
+                .nice-select {
+                    position: relative;
+                    height: 64px;
+                    line-height: 64px;
+                    font-size: 15px;
+                    font-weight: 500;
+                    font-family: 'Work Sans', sans-serif;
+                    color: #848484;
+                    background: #ffffff;
+                    border-radius: 5px;
+                    padding: 0px 20px;
+                    cursor: pointer;
+                    user-select: none;
+                    width: calc(100% - 20px); 
+
+                    span {
+                        font-weight: 500;
+                        font-family: 'Work Sans', sans-serif;
+                    }
+
+                    .list {
+                        position: absolute;
+                        top: 100%;
+                        left: 0;
+                        width: 100%;
+                        cursor: pointer;
+                        background-color: #fff;
+                        border-radius: 5px;
+                        overflow: hidden;
+                        margin-top: 4px;
+                        transition: all 0.2s cubic-bezier(0.5, 0, 0, 1.25), opacity 0.15s ease-out;
+                        transform-origin: 50% 0;
+                        transform: scale(0) translateY(-21px);
+                        z-index: 9;
+
+                        &.open {    
+                            transform: scale(1) translateY(0);
+                        }
+
+                        li {
+                            cursor: pointer;
+                            font-weight: 400;
+                            line-height: 40px;
+                            list-style: none;
+                            min-height: 40px;
+                            outline: none;
+                            padding-left: 18px;
+                            padding-right: 29px;
+                            text-align: left;
+                            -webkit-transition: all 0.2s;
+                            transition: all 0.2s;
+
+                            &.selected {
+                                font-weight: bold;
+                                background-color: #f6f6f6
+                            }
+                        };
+                    }
+                }
+                button {
+                    background-color: $main-color;
+                    border: none;
+                    outline: none;
+                    color: $white-color;
+                    font-weight: 500;
+                    font-family: 'Work Sans', sans-serif;
+                    font-size: 17px;
+                    display: block;
+                    width: 100%;
+                    height: 64px;
+                    border-radius: 5px;
+                    text-align: center;
+                    transition: .5s ease;
+
+                    &:hover {
+                        background: #061a3a;
+                    }
+                    
+                    i, span {
+                        display: inline-block;
+                        font-weight: 500;
+                        font-family: 'Work Sans', sans-serif;
+                        font-size: 17px;
+                    }
+                }
+            }
+        }
+    }
+    .hero-pattern-layer {
+        position: absolute;
+        width: 500vw;
+        height: 95px;
+        bottom: 0;
+        right: 0;
+        background: url('/image/shape-1.png') repeat-x;
+        animation: slide 100s infinite linear forwards;
+    }
+}
+
+@keyframes slide {
+    0% {
+        right: 0;
+    }
+    100% {
+        right: -400vw;
+    }
+}

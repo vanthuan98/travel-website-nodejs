@@ -1,0 +1,162 @@
+<header class="header style-two">
+    <div class="container">
+        <nav class="navbar">
+            <a href="/" class="nav-logo">
+                <img src="/image/logo.png" alt="logo">
+            </a>
+            <div class="nav-menu">
+                <button class="nav-menu-toggler">
+                    <i class='bx bx-menu'></i>
+                </button>
+                <ul class="nav-menu-item">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+                    <li>
+                        <a class="active" href="/destination">Destinations</a>
+                    </li>
+                    <li>
+                        <a href="/tours">Tours</a>
+                    </li>
+                    <li>
+                        <a href="blogs">Blog</a>
+                    </li>
+                    <li>
+                        <a href="#">Contact</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="nav-right-content">
+                <button class="nav-right-content__item">
+                    <i class='bx bx-search'></i>
+                </button>
+                <button class="nav-right-content__item">
+                    <i class='bx bx-user'></i>
+                </button>
+            </div>
+        </nav>
+    </div>
+    <div class="menu-toggle-overlay"></div>
+</header>
+<div class="modal-nav-menu-item">
+    <button class="close-modal-nav-menu">
+        <i class='bx bx-x-circle'></i>
+    </button>
+    <a href="/" class="nav-logo">
+        <img src="/image/logo.png" alt="logo">
+    </a>
+    <ul class="menu">
+        <li>
+            <a href="/">Home</a>
+        </li>
+        <li>
+            <a class="active" href="/destination">Destinations</a>
+        </li>
+        <li>
+            <a href="/tours">Tours</a>
+        </li>
+        <li>
+            <a href="/blogs">Blog</a>
+        </li>
+        <li>
+            <a href="#">Contact</a>
+        </li>
+    </ul>
+</div>
+
+
+<script>
+    const header = document.querySelector('.header');
+    const logo = document.querySelector('.nav-logo img');
+    const menuToggler = document.querySelector('.nav-menu-toggler');
+    const modalNavMenuItem = document.querySelector('.modal-nav-menu-item');
+    const navMenuItems = document.querySelectorAll('.nav-menu-item li a');
+    const itemMenus = document.querySelectorAll('.modal-nav-menu-item ul li a');
+    const menuToggleOverlay = document.querySelector('.menu-toggle-overlay');
+    const closeModalNavMenu = document.querySelector('.close-modal-nav-menu');
+    let prevScrollpos = window.pageYOffset;
+
+    if (header.classList.contains('style-two')) {
+        logo.src = '/image/logo-3.png';
+    }
+
+    //hide navbar on scroll
+    window.onscroll = function () {
+        let currentScrollPos = window.pageYOffset;
+        if (prevScrollpos > currentScrollPos) {
+            header.style.position = 'fixed';
+            header.style.top = "0";
+            header.style.background = "#061a3a";
+            menuToggler.style.color = "#fff";
+            logo.src = '/image/logo.png';
+
+            navMenuItems.forEach(item => {
+                item.style.color = '#fff';
+            });
+
+        } else {
+            header.style.top = "-100%";
+            header.style.position = 'absolute';
+            navMenuItems.forEach(item => {
+                item.style.color = '#061a3a';
+            });
+        }
+
+        if (window.pageYOffset === 0) {
+            header.style.background = "transparent";
+            menuToggler.style.color = "#061a3a";
+            logo.src = '/image/logo-3.png';
+
+            navMenuItems.forEach(item => {
+                item.style.color = '#061a3a';
+            });
+
+            if (header.classList.contains('style-two')) {
+                header.style.position = 'unset';
+            } else {
+                header.style.position = 'absolute';
+            }
+        }
+
+        prevScrollpos = currentScrollPos;
+    }
+
+    // menu toggle
+    menuToggler.addEventListener('click', () => {
+        if (modalNavMenuItem.classList.contains('show')) {
+            modalNavMenuItem.classList.remove('show');
+            menuToggleOverlay.classList.remove('show');
+        } else {
+            modalNavMenuItem.classList.add('show');
+            menuToggleOverlay.classList.add('show');
+        }
+    });
+
+    // active style when click menu item
+
+
+    itemMenus.forEach(itemMenu => {
+        itemMenu.addEventListener('click', () => {
+            itemMenus.forEach(item => {
+                item.classList.remove('active');
+            });
+            itemMenu.classList.add('active');
+            modalNavMenuItem.classList.remove('show');
+            menuToggleOverlay.classList.remove('show');
+        });
+    });
+
+    // click overlay will close menu
+    window.onclick = function (e) {
+        if (e.target === menuToggleOverlay) {
+            modalNavMenuItem.classList.remove('show');
+            menuToggleOverlay.classList.remove('show');
+        }
+    }
+
+    closeModalNavMenu.addEventListener('click', () => {
+        modalNavMenuItem.classList.remove('show');
+        menuToggleOverlay.classList.remove('show');
+    });
+
+</script>
