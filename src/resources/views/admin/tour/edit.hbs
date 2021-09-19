@@ -1,0 +1,109 @@
+<section class="wrapper">
+    <nav class="sidebar">
+        <a href="/" class="sidebar-brand">
+            <img src="/image/logo.png" alt="logo" />
+        </a>
+        <ul class="sidebar-nav">
+            <li class="sidebar-nav-item">
+                <a href="/admin/dashboard">
+                    <i class="bx bxs-dashboard"></i>
+                    Dashboard
+                </a>
+            </li>
+            <li class="sidebar-nav-item">
+                <i class="bx bx-buildings"></i>
+                Destination
+                <ul class="nav-sub-item">
+                    <li><a href="/admin/destination/create">Create destination</a></li>
+                    <li><a href="/admin/destination">Destination</a></li>
+                </ul>
+            </li>
+            <li class="sidebar-nav-item">
+                <i class="bx bx-train"></i>
+                Tour
+                <ul class="nav-sub-item">
+                    <li><a href="/admin/tour/create">Create Tour</a></li>
+                    <li><a href="/admin/tour">Tour</a></li>
+                </ul>
+            </li>
+            <li class="sidebar-nav-item">
+                <i class="bx bx-book-content"></i>
+                Blog
+                <ul class="nav-sub-item">
+                    <li><a href="/admin/blog/create">Create Blog</a></li>
+                    <li><a href="/admin/blog">Blog</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+    <div class="main">
+        <nav class="navbar">
+            <button class="sidebar-toggle">
+                <i class="bx bx-menu-alt-left"></i>
+            </button>
+            <form class="input-search">
+                <input type="text" name="search" placeholder="Search projects" />
+                <button type="submit">
+                    <i class="bx bx-search-alt"></i>
+                </button>
+            </form>
+            <div class="account">
+                <figure>
+                    <img src="/image/testimonial-2.png" alt="user avatar" />
+                    <span>Admin</span>
+                </figure>
+                <ul>
+                    <li><a href="#">Sign out</a></li>
+                </ul>
+            </div>
+        </nav>
+        <main class="main-content">
+            <div class="create-tour-wrapper">
+                <form class="form-create-tour" method="POST" action="/admin/tour/{{tour._id}}/?_method=PUT">
+                    <div class="form-group">
+                        <p>Title</p>
+                        <input type="text" name="title" required value="{{tour.title}}">
+                    </div>
+                    <div class="form-group">
+                        <p>Price</p>
+                        <input type="text" name="price" required value="{{tour.price}}">
+                    </div>
+                    <div class="form-group">
+                        <p>Review</p>
+                        <input type="text" name="review" required value="{{tour.review}}">
+                    </div>
+                    <div class="form-group">
+                        <p>Rating</p>
+                        <input type="number" name="rating" max="5" min="1" required value="{{tour.rating}}">
+                    </div>
+                    <div class="form-group">
+                        <p>Image</p>
+                        <input type="text" name="image" required value="{{tour.image}}">
+                    </div>
+                    <div class="form-group">
+                        <p>Excerpt</p>
+                        <input type="text" name="excerpt" required value="{{tour.excerpt}}">
+                    </div>
+                    <div class="form-group">
+                        <button type="submit">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </main>
+    </div>
+</section>
+
+<script>
+    const toggleSidebar = document.querySelector('.sidebar-toggle');
+    const sidebarEle = document.querySelector('.sidebar');
+    const mainEle = document.querySelector('.main');
+
+    // toggle sidebar
+    toggleSidebar.addEventListener('click', () => {
+        sidebarEle.classList.toggle('toggle');
+        mainEle.classList.toggle('toggle');
+    });
+
+
+
+</script>
